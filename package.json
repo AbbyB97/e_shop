@@ -11,7 +11,8 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
     "dev": "concurrently \"npm run server\" \"npm run client \"",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
+    "local-setup": "npm install && npm install --prefix frontend"
   },
   "author": "Abhijit.B",
   "license": "MIT",
