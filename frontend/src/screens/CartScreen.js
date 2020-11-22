@@ -44,6 +44,9 @@ function MyVerticallyCenteredModal(props) {
 
 const CartScreen = ({ match, location, history }) => {
   const [modalShow, setModalShow] = React.useState(false);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+console.log(userInfo);
   const productId = match.params.id;
 
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
@@ -141,11 +144,14 @@ const CartScreen = ({ match, location, history }) => {
               <Button
                 type="button"
                 className="btn-block"
-                disabled={cartItems.length === 0}
+                disabled={cartItems.length === 0 || !userInfo}
                 onClick={checkoutHandler}
               >
                 Confirm payment
               </Button>
+              {!userInfo &&  <Message className="my 2">
+            You have to login to make order <Link to="/">Login</Link>
+          </Message>}
             </ListGroup.Item>
           </ListGroup>
         </Card>
